@@ -1,7 +1,7 @@
 name: ci
 
 env:
-  CONFIG_REPO_NAME: argocd-webapp-config
+  CONFIG_REPO_NAME: Nodejs-Workflow-ArgoCD
   
 on:
   push:
@@ -37,9 +37,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: WebApplication1/Dockerfile
+          file: Dockerfile
           push: true
-          tags: adil22/argocd-practice:${{ github.sha }}
+          tags: adil22/node-app:${{ github.sha }}
   promote-to-dev-environment:
     runs-on: ubuntu-latest
     needs: docker-build-push
@@ -53,6 +53,6 @@ jobs:
           echo "checkout main branch"
           git checkout main
           echo "updating image tag in values file"
-          sed -i "s,tag:.*,tag:\ ${{ github.sha }}," helm/webapp/values.yaml
+          sed -i "s,tag:.*,tag:\ ${{ github.sha }}," helm-charts-deploy/node-app/values.yaml
           git add . && git commit -m "update image tag"
           git push
