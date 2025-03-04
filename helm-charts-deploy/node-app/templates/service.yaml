@@ -6,7 +6,7 @@ metadata:
     {{- include "node-app.labels" . | nindent 4 }}
 spec:
   {{- if .Values.service.externalIPs }}
-    externalIPs:
+  externalIPs:
   {{ toYaml .Values.service.externalIPs | indent 4 }}
   {{- end }}
   type: {{ .Values.service.type }}
