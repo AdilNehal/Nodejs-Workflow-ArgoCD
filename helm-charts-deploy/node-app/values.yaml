@@ -56,7 +56,7 @@ service:
   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
   port: 3000
   
-  externalIPs: ["192.168.100.62"]
+  externalIPs: ["172.16.116.129"]
 
 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
